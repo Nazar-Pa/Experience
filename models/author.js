@@ -8,5 +8,6 @@ const authorSchema = new mongoose.Schema({
     }
 })
 
+
 //'Author' is the name of the table
 module.exports = mongoose.model('Author', authorSchema)
