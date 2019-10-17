@@ -1,9 +1,12 @@
+//import * as FilePond from 'filepond';
 FilePond.registerPlugin(
     FilePondPluginImagePreview,
     FilePondPluginImageResize,
-    FilePondPluginFileEncode
-    );
+    FilePondPluginFileEncode,
+    )
 
-FilePond.create(document.querySelector('input'));
+
 
 FilePond.parse(document.body);
+
+// FilePond.create(document.querySelector('input'));
