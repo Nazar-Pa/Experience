@@ -27,7 +27,7 @@ const bookSchema = new mongoose.Schema({
         required: true
     },
     coverImageType: {
-        type: String, 
+        type: String,
         required: true
     },
     author: {
