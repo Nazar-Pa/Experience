@@ -1,12 +1,16 @@
-//import * as FilePond from 'filepond';
+import { FilePond } from "filepond";
+import { parse } from "path";
+
 FilePond.registerPlugin(
     FilePondPluginImagePreview,
     FilePondPluginImageResize,
-    FilePondPluginFileEncode,
-    )
+    FilePondPluginFileEncode
+)
 
+FilePond.setOptions({
+    stylePanelAspectRatio: 150 / 100,
+    imageResizeTargetWidth: 100,
+    imageResizeTargetWidth: 150
+})
 
-
-FilePond.parse(document.body);
-
-// FilePond.create(document.querySelector('input'));
+FilePond,parse(document.body);

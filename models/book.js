@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const Author = require('../models/author.js')
 
-//"title" is the name of the column in the table(schema in mongoose)
+//"name" is the name of the column in the table(schema in mongoose)
 const bookSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -11,7 +12,7 @@ const bookSchema = new mongoose.Schema({
     },
     publishDate: {
         type: Date,
-        required: true
+        required: true,     
     },
     pageCount: {
         type: Number,
@@ -31,17 +32,13 @@ const bookSchema = new mongoose.Schema({
         required: true
     },
     author: {
-        //telling mongoose that this is an object inside
-        //our collections
-    type: mongoose.Schema.Types.ObjectId, 
-    required: true,
-    //this shows that we reference it from Author collection
-    // (author.js in models folder)
-    ref: 'Author'
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Author'
     }
-
 })
 
+// encoding the Buffer data of image to the base64 string
 bookSchema.virtual('coverImagePath').get(function(){
     if (this.coverImage != null && this.coverImageType != null) {
         return `data:${this.coverImageType};charset=utf-8;base64,
@@ -49,11 +46,6 @@ bookSchema.virtual('coverImagePath').get(function(){
     }
 })
 
-//instead of passing images itselves in the database, we
-// will just pass the name of the image, so we can just 
-// store as single small string and then we can store actual
-// image itself on the server in the file system
 
-
-//'Book' is the name of the table
+//'Author' is the name of the table
 module.exports = mongoose.model('Book', bookSchema)
